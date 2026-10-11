@@ -1,7 +1,15 @@
 import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
-import koreanize_matplotlib
+from matplotlib import font_manager
+
+# Use a Korean font if one is available in the deployed environment.
+_available_fonts = {font.name for font in font_manager.fontManager.ttflist}
+for _font in ["NanumGothic", "Malgun Gothic", "AppleGothic", "Noto Sans CJK KR", "Noto Sans KR"]:
+    if _font in _available_fonts:
+        plt.rcParams["font.family"] = _font
+        break
+plt.rcParams["axes.unicode_minus"] = False
 
 st.set_page_config(page_title="포물선 운동 최적화 시뮬레이터", layout="wide")
 st.title("공기 저항에 따른 최적 발사 각도")
