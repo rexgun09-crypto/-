@@ -1,6 +1,7 @@
 import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
+import koreanize_matplotlib  # Streamlit Cloud에서 한글 그래프 글꼴 표시
 
 st.set_page_config(page_title="포물선 운동 최적화 시뮬레이터", layout="wide")
 st.title("공기 저항에 따른 최적 발사 각도")
@@ -109,12 +110,6 @@ st.write(
     f"최대 사거리는 **{best_range:.2f} m**입니다. "
     f"공기 저항이 없는 이상적인 모델에서는 같은 높이에서 발사·착지할 때 "
     f"45°에서 사거리가 최대이며, 사거리는 **{ideal_range:.2f} m**입니다."
-)
-
-st.info(
-    "탐구 팁: 한 번에 한 변수만 바꾸세요. 먼저 k를 0으로 두고 기준 결과를 확인한 뒤, "
-    "k를 0.01, 0.02, 0.04, 0.06 kg/m 등으로 바꾸어 최적 각도와 최대 사거리의 변화를 기록하면 됩니다. "
-    "이 결과는 선택한 저항 모델과 조건에 따른 것이며, 모든 물체에 적용되는 보편적인 각도는 아닙니다."
 )
 
 with st.expander("모델의 가정과 한계"):
